@@ -42,7 +42,7 @@ def pdf_extraction(file):
     split_text_file(pdf_extract_output)  # Split the extracted text into smaller files for processing.
     with open(pdf_extract_output, 'r') as output:  # Open the output text file.
         pdf_extract_output = output.read() # Read the extracted content.
-    pdf_extract_output_json = document_summary(pdf_extract_output[:1000])  # Summarize the first 10,000 characters of the extracted content.
+    pdf_extract_output_json = document_summary(pdf_extract_output)  # Summarize the first 10,000 characters of the extracted content.
     size_of_uploaded_pdf_file = os.path.getsize(str(file))/1000  # Calculate the size of the uploaded PDF file in KB.
     num_chars = sum(len(page.extract_text()) for page in PyPDF2.PdfReader(str(file)).pages)  # Calculate the total number of characters in the PDF.
     number_of_tokens = num_chars / 4  # Estimate the number of tokens based on character count.
